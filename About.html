@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Pulse</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Miniver&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+    </style>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #fff;
+            color: #333;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: transparent; /* Transparent navbar */
+            transition: background 0.3s;
+        }
+
+        /* Change navbar background on scroll */
+        .scrolled {
+            background: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #fff; /* White text for contrast */
+        }
+
+        .logo span {
+            color: #e6007e;
+        }
+
+        .navbar {
+            display: flex;
+            gap: 25px;
+            font-weight: bold;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #fff; /* White links */
+            font-size: 16px;
+            transition: color 0.3s;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar a:hover {
+            color: #e6007e;
+        }
+
+        .icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .icons i {
+            font-size: 22px;
+            color: #fff;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .icons i:hover {
+            color: #e6007e;
+        }
+
+       /*about section*/
+
+        .about{
+            position: relative;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: left;
+            height: 100vh;
+            padding-left: 5%;
+            color: #fff;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1)), url('images/Home image.jpg') center/cover no-repeat;
+
+        }
+
+        /* Dark Overlay for better readability */
+        .about::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+            z-index: 1;
+        }
+
+        .about-content {
+            position: absolute  ;
+            z-index: 2;
+            max-width: 40%;
+            margin-top: 4rem;
+        }
+
+        .about h3{
+            font-family: poppins;
+            font-size: 50px;
+            font-weight: 600;
+            color: #ff4081;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .about p {
+            font-family: poppins;
+            font-size: 18px;
+            color: #999999;
+            margin-top: 10px;
+            line-height: 1.6rem;
+            font-weight: 300;
+
+        }
+
+        .btn {
+            margin-top: 20px;
+            padding: 14px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(90deg, #e6007e, #ff80b0);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0px 4px 10px rgba(230, 0, 126, 0.3);
+        }
+
+        .btn:hover {
+            background: linear-gradient(90deg, #ff80b0, #e6007e);
+            transform: scale(1.05);
+        }
+
+        .btn a {
+            text-decoration: none;
+            color: white;
+        }
+
+
+        .about-content{
+            padding: 5px;
+        }
+
+
+        @media (max-width: 768px) {
+            .about-content {
+                max-width: 80%;
+                text-align: center;
+            }
+
+            .navbar {
+                display: none;
+            }
+
+            header {
+                padding: 15px 3%;
+            }
+
+
+        }
+
+        footer {
+            background-color: rgba(28,27,28);
+            color: #999999;
+            padding: 40px 40px;
+
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #dddddd;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: #999999;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(28,27,28);
+            font-size: 14px;
+            color: #999999;
+        }
+
+
+
+
+    </style>
+    <script>
+        // Change navbar background when scrolling
+        window.addEventListener('scroll', function() {
+            let header = document.querySelector("header");
+            header.classList.toggle("scrolled", window.scrollY > 50);
+        });
+    </script>
+
+</head>
+<body>
+
+<header>
+    <a href="#" class="logo">PULSE <span>.</span></a>
+    <nav class="navbar">
+        <a href="Home.html">Home</a>
+        <a href="About.html">About</a>
+        <a href="products.html">Products</a>
+        <a href="contact.html">Contact</a>
+        <a href="Login.html">Log In</a>
+        <a href="index2.html" target="_blank">Sign Up</a>
+    </nav>
+    <div class="icons">
+        <i class="fa-solid fa-heart"onclick="window.location.href='favorite.html'"></i>
+        <i class="fa-solid fa-cart-shopping" onclick="window.location.href='cart.html'"></i>
+        <i class="fa-solid fa-user" onclick="window.location.href='profile.html'"></i>
+            </div>
+</header>
+
+
+<section class="about">
+        <div class="about-content">
+            <h3>Why Choose Us?</h3>
+            <p>At PULSE, we believe mobility should never be a luxury. Our mission is to make high-quality prosthetic limbs accessible and affordable, ensuring that everyone can move with confidence and live without limits.</p>
+            <p>By combining cutting-edge technology with affordability, we empower individuals to embrace life without compromise. Every step matters—because you deserve the best without financial barriers.
+
+                Redefining possibilities, one step at a time.</p>
+            <button class="btn"> <a href="contact.html">Reach us!</a></button>
+        </div>
+</section>
+
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Pulse</h3>
+                <ul>
+                    <li><a href="About.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="products.html">Our Products</a></li>
+                    <li><a href="index2.html">Sign up</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>For visitors</h3>
+                <ul>
+                    <li><a href="products.html">Browse Products</a></li>
+                    <li><a href="#">How It Works</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>For Subscribers</h3>
+                <ul>
+                    <li><a href="profile.html">Update your profile</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Prosthetic Tips</a></li>
+                    <li><a href="#">Resources</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>For Suppliers</h3>
+                <ul>
+                    <li><a href="Login.html">List Your Supplies</a></li>
+                    <li><a href="#">PULSE Guidelines</a></li>
+                    <li><a href="#">Success Stories</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 PULSE. All rights reserved.
+        </div>
+    </div>
+</footer>
+
+
+</body>
+
+</html>

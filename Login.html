@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Sign In</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #fff;
+            color: #333;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: transparent; /* Transparent navbar */
+            transition: background 0.3s;
+        }
+
+        /* Change navbar background on scroll */
+        .scrolled {
+            background: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #fff; /* White text for contrast */
+        }
+
+        .logo span {
+            color: #e6007e;
+        }
+
+        .navbar {
+            display: flex;
+            gap: 25px;
+            font-weight: bold;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #fff; /* White links */
+            font-size: 16px;
+            transition: color 0.3s;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar a:hover {
+            color: #e6007e;
+        }
+
+        .icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .icons i {
+            font-size: 22px;
+            color: #fff;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .icons i:hover {
+            color: #e6007e;
+        }
+
+        .login {
+            position: relative;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: left;
+            height: 100vh;
+            padding-left: 5%;
+            color: #fff;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1)), url('images/Home image.jpg') center/cover no-repeat;
+
+        }
+
+        /* Dark Overlay for better readability */
+        .login::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+            z-index: 1;
+        }
+
+
+
+
+        .login-container {
+            position: relative;
+            z-index: 2;
+            background: white;
+            padding: 20px;
+            width: 350px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        /* Button */
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background: #e6007e;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background: #ff80b0;
+        }
+
+        p {
+            margin-top: 15px;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: #333;
+            color: white;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
+
+        .login .login-container h2{
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="#" class="logo">PULSE <span>.</span></a>
+    <nav class="navbar">
+        <a href="Home.html">Home</a>
+        <a href="About.html">About</a>
+        <a href="products.html">Products</a>
+        <a href="contact.html">Contact</a>
+        <a href="Login.html">Log In</a>
+        <a href="index2.html" target="_blank">Sign Up</a>
+    </nav>
+    <div class="icons">
+        <i class="fa-solid fa-heart"onclick="window.location.href='favorite.html'"></i>
+        <i class="fa-solid fa-cart-shopping" onclick="window.location.href='cart.html'"></i>
+            </div>
+</header>
+<section class="login">
+
+    <div class="login-container">
+        <h2>Sign In</h2>
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+                <small class="error-message"></small>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+                <small class="error-message"></small>
+            </div>
+
+            <button type="submit" class="btn">Sign In</button>
+            <p><a href="#">Forgot Password?</a></p>
+            <p>Don't have an account? <a href="index2.html" target="_blank">Sign Up</a></p>
+        </form>
+    </div>
+
+
+</section>
+
+</body>
+</html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorite Products</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #fff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: #010B2CFF;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .logo span {
+            color: #e6007e;
+        }
+
+        .navbar {
+            display: flex;
+            gap: 25px;
+            font-weight: bold;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #e6007e;
+        }
+
+        .icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .icons i {
+            font-size: 22px;
+            color: #333;
+            cursor: pointer;
+            transition: color 0.3s;
+            color: #ffffff;
+        }
+
+        .icons i:hover {
+            color: #e6007e;
+        }
+
+        .favorite-section {
+            padding: 120px 5%;
+            text-align: center;
+            background: #010B2CFF
+        }
+
+        .favorite-section h2 {
+            font-size: 36px;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .favorite-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+
+        }
+
+        .favorite-card {
+            background: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .favorite-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .favorite-card img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .favorite-card h3 {
+            font-size: 18px;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .favorite-card .price {
+            font-size: 18px;
+            color: #e6007e;
+            margin: 10px 0;
+        }
+
+        .favorite-card .remove-btn {
+            padding: 10px 15px;
+            font-size: 14px;
+            color: #fff;
+            background: #e6007e;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .favorite-card .remove-btn:hover {
+            background: #ff80b0;
+        }
+        footer {
+            background-color: rgba(28,27,28);
+            color: #999999;
+            padding: 40px 40px;
+
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #dddddd;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: #999999;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(28,27,28);
+            font-size: 14px;
+            color: #999999;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="#" class="logo">PULSE <span>.</span></a>
+    <nav class="navbar">
+        <a href="Home.html">Home</a>
+        <a href="About.html">About</a>
+        <a href="products.html">Products</a>
+        <a href="contact.html">Contact</a>
+        <a href="Login.html">Log In</a>
+        <a href="index2.html" target="_blank">Sign Up</a>
+    </nav>
+    <div class="icons">
+        <i class="fa-solid fa-cart-shopping" onclick="window.location.href='cart.html'"></i>
+        <i class="fa-solid fa-user" onclick="window.location.href='profile.html'"></i>
+            </div>
+</header>
+
+<section class="favorite-section">
+    <h2>Your Favorite Products</h2>
+    <div class="favorite-container" id="favoriteContainer">
+        <!-- Favorite products will be added here dynamically -->
+    </div>
+</section>
+
+<script>
+    // Sample favorite products data
+    const favoriteProducts = [
+        {
+            id: 1,
+            name: "System Electric Hand DMC",
+            price: "$800.00",
+            image: "images/Image 1.jpg"
+        },
+        {
+            id: 2,
+            name: "Modular Transtibial Kit",
+            price: "$7.50",
+            image: "images/Image 2.jpg"
+        }
+    ];
+
+    // Function to render favorite products
+    function renderFavoriteProducts() {
+        const container = document.getElementById('favoriteContainer');
+        container.innerHTML = '';
+        favoriteProducts.forEach(product => {
+            const productCard = document.createElement('div');
+            productCard.classList.add('favorite-card');
+            productCard.innerHTML = `
+                <img src="${product.image}" alt="${product.name}">
+                <h3>${product.name}</h3>
+                <p class="price">${product.price}</p>
+                <button class="remove-btn" onclick="removeFromFavorites(${product.id})">Remove</button>
+            `;
+            container.appendChild(productCard);
+        });
+    }
+
+    // Function to remove a product from favorites
+    function removeFromFavorites(productId) {
+        const index = favoriteProducts.findIndex(product => product.id === productId);
+        if (index !== -1) {
+            favoriteProducts.splice(index, 1);
+            renderFavoriteProducts();
+        }
+    }
+
+    // Initial render
+    renderFavoriteProducts();
+</script>
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Pulse</h3>
+                <ul>
+                    <li><a href="About.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="products.html">Our Products</a></li>
+                    <li><a href="index2.html">Sign up</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>For visitors</h3>
+                <ul>
+                    <li><a href="products.html">Browse Products</a></li>
+                    <li><a href="#">How It Works</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>For Subscribers</h3>
+                <ul>
+                    <li><a href="profile.html">Update your profile</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Prosthetic Tips</a></li>
+                    <li><a href="#">Resources</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>For Suppliers</h3>
+                <ul>
+                    <li><a href="Login.html">List Your Supplies</a></li>
+                    <li><a href="#">PULSE Guidelines</a></li>
+                    <li><a href="#">Success Stories</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 PULSE. All rights reserved.
+        </div>
+    </div>
+</footer>
+</body>
+</html>

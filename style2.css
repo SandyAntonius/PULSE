@@ -1,0 +1,131 @@
+body{
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    background:linear-gradient(180deg,rgba(9, 9, 36, 0.904),rgba(17, 18, 80, 0.904),rgba(11, 11, 17, 0.904)) rgba(2, 3, 59, 0.904);
+    font-family: 'Arial Narrow Bold', Tahoma, Georgia;
+    color:rgb(255, 255, 255);
+    font-size: 12px;
+    line-height: 1.3rem;
+}
+
+
+label{
+    display:block;
+    margin: 0.9rem 0;
+}
+
+
+h1 , p{
+    margin: 1em auto;
+    text-align: center;
+}
+
+
+form{
+    max-width: 500px;
+    min-width: 300px;
+    width: 50vw;
+    margin: 0px auto;
+    
+    padding: 2rem;
+    /*background-color: #51a0ce8f;*/
+    background: linear-gradient(180deg, #1f3d4e8f, #07376d8f, #0154858f);
+    box-shadow: 0px 0px 8px 5px rgba(76, 93, 116, 0.685);
+    border-radius: 9px;
+    font-weight: bold;
+}
+
+
+fieldset{
+    border: 0;
+    padding-left: 1.3rem;
+    padding-right: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 2.5px solid rgb(206, 124, 195);
+}
+
+
+fieldset:last-of-type{
+    border-bottom: none;
+}
+
+
+input, textarea, select{
+ width:100%;
+ margin: 6px 0;
+ padding: 0.5rem;
+ min-height: 1.6em;
+ border-radius: 9px;
+ border: 1.4px solid rgba(43, 11, 73, 0.6);
+ background-color: hsla(304, 100%, 97%, 0.493);
+ color:rgb(255, 255, 255);
+ 
+
+}
+
+input::placeholder {
+    color: rgb(8, 32, 32);
+    opacity: 9; /* Ensures full visibility */
+    font-family: sans-serif;
+}
+  
+  input:focus::placeholder {
+    color: rgb(148, 6, 89); /* Changes color when input is focused */
+  }
+  
+
+legend{
+    font-size: 0.8rem; 
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    border: none;
+}
+
+.inline{
+    width: unset;
+    margin: 0;
+    margin-right: 0.6em;/* the space between the button radio and texts*/
+    vertical-align: middle; /*to parallel the circled button to the text */
+}
+
+input[type="submit"]{
+    display: block;
+    width:60%;
+    margin: 0 auto;
+    height: 1.9em;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #68b6ff3f;
+    border: 0.2px   ;
+    box-shadow: 0px 0px 5px 0px rgba(38, 1, 49, 0.336);
+    
+}
+
+input[type="submit"]:hover{
+    background: linear-gradient(90deg,#c91da4e5, #a03aa3e5, rgb(105, 105, 253));
+}
+
+input[type="file"]{
+    padding: 1px 2px;
+
+}
+
+.select-about{
+    background-color: #f8f8f883;
+    color: #160a0a;
+    border: 1.4px solid rgba(43, 11, 73, 0.6);
+}
+/*input[type="text"], input[type="email"], input[type="password"], select{
+
+    width: 50%;
+    padding: 0.2rem;
+    margin-bottom: 0.2rem;
+    border: none;
+    border-radius: 10px;
+    background-color: #f8f8f883;
+}*/

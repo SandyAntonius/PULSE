@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PULSE - Products</title>
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #fff;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: #010B2CFF; /* Transparent navbar */
+            transition: background 0.3s;
+        }
+
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .logo span {
+            color: #e6007e;
+        }
+
+
+        .navbar {
+            display: flex;
+            gap: 25px;
+            font-weight: bold;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #ffffff; /* White links */
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #e6007e;
+        }
+
+        .icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .icons i {
+            font-size: 22px;
+            color: #ffffff;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .icons i:hover {
+            color: #e6007e;
+        }
+
+
+        .navbar-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .search-container {
+            position: relative;
+            margin: 20px; /* Space between links and search bar */
+            margin-left: 50px;
+            margin-bottom: 50px;
+            margin-top: 5px;
+        }
+
+        .search-box {
+            padding: 8px 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            outline: none;
+            width: 300px;
+            height: 45px;
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        .search-box:focus {
+            box-shadow: 0 0 10px rgba(230, 0, 126, 0.6);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 540px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #777;
+            cursor: pointer;
+        }
+
+        .navbar-right i {
+            font-size: 20px;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .navbar-right i:hover {
+            color: #e6007e;
+        }
+
+        /* Glowing and scaling effect for product cards */
+        .glow-up {
+            animation: glowUp 1.5s ease-out forwards;
+        }
+
+        @keyframes glowUp {
+            0% {
+                box-shadow: 0 0 10px rgba(230, 0, 126, 0.6);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(230, 0, 126, 1);
+                transform: scale(1.05);
+            }
+            100% {
+                box-shadow: 0 0 30px rgba(230, 0, 126, 0.9);
+                transform: scale(1);
+            }
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 120px 5%;
+            text-align: center;
+            background: #010B2CFF;
+        }
+
+        .products-section h2 {
+            font-size: 40px;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .products-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .product-card {
+            background: #ffffff;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-card img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .product-card h3 {
+            font-size: 18px;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .favorite-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 22px;
+            color: #010163;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .favorite-icon:hover {
+            color: #ff69b4;
+        }
+        /* Buttons */
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .product-card button {
+            padding: 10px 15px;
+            font-size: 14px;
+            color: #fff;
+            background: #000;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 120px;
+        }
+
+        .product-card button:hover {
+            background: #e6007e;
+        }
+
+        .product-card .price {
+            font-size: 18px;
+            color: #e6007e;
+            margin: 10px 0;
+        }
+
+        .product-card .rating {
+            font-size: 16px;
+            color: #ffcc00;
+            margin-bottom: 10px;
+        }
+        .learn-more {
+            background: transparent;
+            border: 1px solid #e6007e;
+            color: #e6007e;
+            font-weight: bold;
+        }
+
+        .learn-more:hover {
+            background: #e6007e;
+            color: #fff;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .products-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .products-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .products-container {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+
+        footer {
+            background-color: rgba(28,27,28);
+            color: #999999;
+            padding: 40px 40px;
+
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #dddddd;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: #999999;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(28,27,28);
+            font-size: 14px;
+            color: #999999;
+        }
+
+        .scrolled{
+            background: rgba(0, 0, 0, 0.7);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) ;
+        }
+
+    </style>
+
+    <script>
+        // Change navbar background when scrolling
+        window.addEventListener('scroll', function() {
+            let header = document.querySelector("header");
+            header.classList.toggle("scrolled", window.scrollY > 50);
+        });
+    </script>
+
+</head>
+<body>
+
+<header>
+    <a href="#" class="logo">PULSE <span>.</span></a>
+    <nav class="navbar">
+        <a href="Home.html">Home</a>
+        <a href="About.html">About</a>
+        <a href="products.html">Products</a>
+        <a href="contact.html">Contact</a>
+        <a href="Login.html">Log In</a>
+        <a href="index2.html" target="_blank">Sign Up</a>
+    </nav>
+
+
+    <div class="icons">
+        <i class="fa-solid fa-heart"onclick="window.location.href='favorite.html'"></i>
+        <i class="fa-solid fa-cart-shopping" onclick="window.location.href='cart.html'"></i>
+        <i class="fa-solid fa-user" onclick="window.location.href='profile.html'"></i>
+            </div>
+</header>
+
+<section class="products-section">
+    <div class="search-container">
+        <input type="text" id="searchBox" class="search-box" placeholder="Search product..." onkeydown="handleEnter(event)">
+        <i class="fa fa-search search-icon" onclick="searchProduct()"></i>
+                </div>
+    <h2>Our Products</h2>
+    <div class="products-container">
+
+        <div class="product-card">
+            <i class="fa-solid fa-heart favorite-icon"></i>
+            <img src="images/Image 1.jpg" alt="Product 1">
+            <h3>System Electric Hand DMC</h3>
+            <p class="price">$800.00</p>
+            <p class="rating" id="rating-1">★★★★☆</p>
+            <div class="button-container">
+                <button onclick="addToCart('System Electric Hand DMC', 800)">Add to Cart</button>
+                <button class="learn-more">Learn More</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <i class="fa-solid fa-heart favorite-icon"></i>
+            <img src="images/Image%2011.jpg" alt="Product 2">
+            <h3> Covered System Electric Hand DMC</h3>
+            <p class="price">$900.00</p>
+            <p class="rating" id="rating-2">★★★★★</p>
+            <div class="button-container">
+                <button onclick="addToCart()">Add to Cart</button>
+                <button class="learn-more">Learn More</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <i class="fa-solid fa-heart favorite-icon"></i>
+            <img src="images/Image%2033.jpg" alt="Product 3">
+            <h3>Myoskin hand</h3>
+            <p class="price">$63.00</p>
+            <p class="rating" id="rating-3">★★★☆☆</p>
+            <div class="button-container">
+                <button onclick="addToCart()">Add to Cart</button>
+                <button class="learn-more">Learn More</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <i class="fa-solid fa-heart favorite-icon"></i>
+            <img src="images/Image%2013.jpg" alt="Product 4">
+            <h3>Bionic hand</h3>
+            <p class="price">$12000.00</p>
+            <p class="rating" id="rating-4">★★★★★</p>
+            <div class="button-container">
+                <button onclick="addToCart()">Add to Cart</button>
+                <button class="learn-more">Learn More</button>
+            </div>
+        </div>
+        <div class="product-card">
+            <i class="fa-solid fa-heart favorite-icon"></i>
+            <img src="images/Image%203.jpg" alt="Product 5">
+            <h3>Polycentric Knee Joint</h3>
+            <p class="price">$250.00</p>
+            <p class="rating" id="rating-5">★★★★★</p>
+            <div class="button-container">
+                <button onclick="addToCart()">Add to Cart</button>
+                <button class="learn-more">Learn More</button>
+            </div>
+        </div>
+        <div class="product-card">
+            <i class="fa-solid fa-heart favorite-icon"></i>
+            <img src="images/Image%2015.jpg" alt="Product 6">
+            <h3>Single Axis Knee Joint</h3>
+            <p class="price">$45.00</p>
+            <p class="rating" id="rating-6">★★★★★</p>
+            <div class="button-container">
+                <button onclick="addToCart()">Add to Cart</button>
+                <button class="learn-more">Learn More</button>
+            </div>
+        </div>
+        <div class="product-card">
+            <i class="fa-solid fa-heart favorite-icon"></i>
+            <img src="images/Image%2017.jpg" alt="Product 7">
+            <h3>Mechanical Knee Joint</h3>
+            <p class="price">$140.00</p>
+            <p class="rating" id="rating-7">★★★★★</p>
+            <div class="button-container">
+                <button onclick="addToCart()">Add to Cart</button>
+                <button class="learn-more">Learn More</button>
+            </div>
+        </div>
+        <div class="product-card">
+            <i class="fa-solid fa-heart favorite-icon"></i>
+            <img src="images/Image%204.jpg" alt="Product 8">
+            <h3>Shuttle Lock,Pyramid </h3>
+            <p class="price">$48.00</p>
+            <p class="rating" id="rating-8">★★★★☆</p>
+            <div class="button-container">
+                <button onclick="addToCart()">Add to Cart</button>
+                <button class="learn-more">Learn More</button>
+            </div>
+        </div>
+        <div class="product-card">
+            <i class="fa-solid fa-heart favorite-icon"></i>
+            <img src="images/Image%207.jpg" alt="Product 15">
+            <h3>Runway foot</h3>
+            <p class="price">$195.00</p>
+            <p class="rating" id="rating-15">★★★★★</p>
+            <div class="button-container">
+                <button onclick="addToCart('Runway foot', 195)">Add to Cart</button>
+                <button class="learn-more">Learn More</button>
+            </div>
+        </div>
+        <div class="product-card">
+            <i class="fa-solid fa-heart favorite-icon"></i>
+            <img src="images/Image%208.jpg" alt="Product 16">
+            <h3>Runner foot</h3>
+            <p class="price">$648.00</p>
+            <p class="rating" id="rating-16">★★★★★</p>
+            <div class="button-container">
+                <button onclick="addToCart('Runner foot', 648)">Add to Cart</button>
+                <button class="learn-more">Learn More</button>
+            </div>
+        </div>
+        <div class="product-card">
+            <i class="fa-solid fa-heart favorite-icon"></i>
+            <img src="images/Image%2031.jpg" alt="Product 11">
+            <h3>Ossur Rheo XC Knee </h3>
+            <p class="price">$4250.00</p>
+            <p class="rating" id="rating-11">★★★★★</p>
+            <div class="button-container">
+                <button onclick="addToCart()">Add to Cart</button>
+                <button class="learn-more">Learn More</button>
+            </div>
+        </div>
+        <div class="product-card">
+            <i class="fa-solid fa-heart favorite-icon"></i>
+            <img src="images/Image%2022.jpg" alt="Product 12">
+            <h3>hydraulic Knee </h3>
+            <p class="price">$2000.00</p>
+            <p class="rating" id="rating-12">★★★★★</p>
+            <div class="button-container">
+                <button onclick="addToCart()">Add to Cart</button>
+                <button class="learn-more">Learn More</button>
+            </div>
+        </div>
+        <div class="product-card">
+            <i class="fa-solid fa-heart favorite-icon"></i>
+            <img src="images/Image%202.jpg" alt="Product 13">
+            <h3>Modular Transtibial Kit </h3>
+            <p class="price">$7.50</p>
+            <p class="rating" id="rating-13">★★★★★</p>
+            <div class="button-container">
+                <button onclick="addToCart()">Add to Cart</button>
+                <button class="learn-more">Learn More</button>
+            </div>
+        </div>
+        <div class="product-card">
+            <i class="fa-solid fa-heart favorite-icon"></i>
+            <img src="images/Image%205.jpg" alt="Product 14">
+            <h3>Sach foot </h3>
+            <p class="price">$15.00</p>
+            <p class="rating" id="rating-14">★★★★★</p>
+            <div class="button-container">
+                <button onclick="addToCart()">Add to Cart</button>
+                <button class="learn-more">Learn More</button>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<script>
+    function handleEnter(event) {
+        if (event.key === "Enter") searchProduct();
+    }
+
+    function searchProduct() {
+        let query = document.getElementById("searchBox").value.toLowerCase();
+        let found = false;
+
+        document.querySelectorAll(".product-card").forEach(card => {
+            let title = card.querySelector("h3").textContent.toLowerCase();
+            if (title.includes(query)) {
+                card.style.border = "3px solid #e6007e";
+                if (!found) {
+                    card.scrollIntoView({ behavior: "smooth", block: "center" });
+                    found = true;
+                }
+
+                // Apply the glow-up effect for 5 seconds
+                card.classList.add("glow-up");
+                setTimeout(() => card.classList.remove("glow-up"), 5000); // Remove glow after 5 seconds
+
+                setTimeout(() => card.style.border = "", 5000);
+            }
+        });
+
+        if (!found) {
+            console.log("No products found!");
+        }
+    }
+
+    function addToCart() {
+        window.location.href = 'cart.html';
+    }
+    function addToCart(productName, productPrice) {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const product = { name: productName, price: productPrice, quantity: 1 };
+        cart.push(product);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert(`${productName} has been added to your cart.`);
+    }
+</script>
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Pulse</h3>
+                <ul>
+                    <li><a href="About.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="products.html">Our Products</a></li>
+                    <li><a href="index2.html">Sign up</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>For visitors</h3>
+                <ul>
+                    <li><a href="products.html">Browse Products</a></li>
+                    <li><a href="#">How It Works</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>For Subscribers</h3>
+                <ul>
+                    <li><a href="profile.html">Update your profile</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Prosthetic Tips</a></li>
+                    <li><a href="#">Resources</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>For Suppliers</h3>
+                <ul>
+                    <li><a href="Login.html">List Your Supplies</a></li>
+                    <li><a href="#">PULSE Guidelines</a></li>
+                    <li><a href="#">Success Stories</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 PULSE. All rights reserved.
+        </div>
+    </div>
+</footer>
+</body>
+</html>
